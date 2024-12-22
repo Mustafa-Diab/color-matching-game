@@ -8,7 +8,7 @@ import java.util.Collections;
 
 public class Color_Matching_Game extends JFrame implements MouseListener 
 {
-	// Variables to store game state and settings
+	// Variables to store game state and settings.......
 	private static final long serialVersionUID = 1L; // Unique identifier for serialization
 	private static ArrayList<Integer> storeScore = new ArrayList<>(); // Stores scores of all rounds played
 	private static ArrayList<Color> colors = new ArrayList<>(); // Stores a list of colors for the game
