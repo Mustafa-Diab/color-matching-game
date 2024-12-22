@@ -19,7 +19,7 @@ public class Color_Matching_Game extends JFrame implements MouseListener
 	private static int firstRow = -1; // Row of the first clicked box
 	private static int firstCol = -1; // Column of the first clicked box
 	private static int secondRow = -1; // Row of the second clicked box
-	private static int secondCol = -1; // Column of the second clicked box
+	private static int secondCol = -1; // Column of the second clicked box.........
 	private static int currentScore = 0; // Current score of the game
 	private static int highScore = 0; // Highest score achieved in any game
 	private static boolean waitingForSecondClick = false; // Flag to indicate if waiting for the second click in a turn
