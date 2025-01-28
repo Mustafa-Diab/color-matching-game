@@ -1,8 +1,6 @@
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -24,7 +22,10 @@ public class Color_Matching_Game extends JFrame implements MouseListener
 	private static int highScore = 0; // Highest score achieved in any game
 	private static boolean waitingForSecondClick = false; // Flag to indicate if waiting for the second click in a turn
 	private static boolean isPaused = false; // Flag to indicate if the game is paused
-
+	
+	// Main method to launch the game
+    public static void main(String[] args) {mainMenu();}
+	
     // Constructor & Initialization to set up the game window
 	Color_Matching_Game() 
     {
@@ -280,12 +281,6 @@ public class Color_Matching_Game extends JFrame implements MouseListener
         changeBoxColor(getGraphics(), row1, col1, lightGreen);
         changeBoxColor(getGraphics(), row2, col2, lightGreen);
     }
-
-    // Main method to launch the game
-    public static void main(String[] args) 
-    {
-        mainMenu();
-    }
     
     // Method to display the main menu screen
     public static void mainMenu() 
@@ -332,7 +327,6 @@ public class Color_Matching_Game extends JFrame implements MouseListener
         JButton exitButton = new JButton("Exit");
         exitButton.setBounds(350, 425, 200, 50);
         exitButton.addActionListener(e -> {
-        	displayTextFile();
             System.exit(0);
         });
         
@@ -501,7 +495,6 @@ public class Color_Matching_Game extends JFrame implements MouseListener
         JButton exitButton = new JButton("Exit");
         exitButton.setBounds(350, 435, 200, 50);
         exitButton.addActionListener(e -> {
-            displayTextFile();
             System.exit(0);
         });
 
@@ -509,60 +502,5 @@ public class Color_Matching_Game extends JFrame implements MouseListener
         mainMenuFrame.setVisible(true);
         
         decorateMainMenu(mainMenuPanel);
-    }
-    
-    // Method to display result of all rounds played by user
-    private static void displayTextFile() 
-    {
-        // If no games are played exit game (no game results to be displayed)
-        if (numGames == 0)
-            System.exit(0);
-
-        double sumScore = 0; // Variable to store the sum of all scores
-        double averageScore = 0; // Variable to store the average score
-        int currentScore = 0; // Variable to store the score of the current round
-        int showScore = 0; // Variable to display the current round number
-        int bestScore = Integer.MAX_VALUE; // Initialize bestScore to maximum possible value
-        int worstScore = Integer.MIN_VALUE; // Initialize worstScore to minimum possible value
-
-        try 
-        {
-            FileWriter fileWriter = new FileWriter("displayRounds.txt"); // Initialize FileWriter to write to a file
-            PrintWriter printWriter = new PrintWriter(fileWriter); // Initialize PrintWriter to write formatted representations of objects to the file
-
-            // Iterate through all stored scores
-            for (int i = 0; i < storeScore.size(); i++) 
-            {
-                currentScore = storeScore.get(i); // Get the score of the current round
-                sumScore += currentScore; // Add the current score to the sum of scores
-                showScore = i + 1; // Increment round number to start from 1
-
-                // Write round number and score to the file
-                printWriter.println("Round: " + showScore + " Score: " + currentScore);
-
-                // Update best score if the current score is lower
-                if (currentScore < bestScore)
-                    bestScore = currentScore;
-
-                // Update worst score if the current score is higher
-                if (currentScore > worstScore)
-                    worstScore = currentScore;
-            }
-
-            averageScore = sumScore / storeScore.size(); // Calculate the average score
-
-            // Write best, worst, average scores, and number of games to the file
-            printWriter.println("\nBest Score: " + bestScore);
-            printWriter.println("Worst Score: " + worstScore);
-            printWriter.println("Average Score: " + averageScore);
-            printWriter.println("Number of Games: " + numGames);
-
-            printWriter.close(); // Close the PrintWriter
-        } 
-        catch (IOException e) // Handle file writing errors
-        {
-            System.out.println("An error occurred while writing to the file.");
-            e.printStackTrace();
-        }
     }
 }
