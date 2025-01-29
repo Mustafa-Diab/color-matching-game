@@ -29,4 +29,4 @@ This project is implemented in Java, using a GUI framework like Swing or JavaFX 
 
 1. Clone the repository:  
    ```bash  
-   git clone https://github.com/your-username/color-matching-game.git  
+   git clone https://github.com/Mustafa-Diab/color-matching-game.git
