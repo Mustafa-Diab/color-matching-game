@@ -9,7 +9,7 @@ The Color Matching Game is a memory-based game where users must match pairs of c
 - If the colors match, the boxes remain visible; otherwise, they reset to their original state.  
 - The game challenges the player to memorize the positions of the colors and match all pairs to win.  
 
-This project is implemented in Java, using a GUI framework like Swing or JavaFX for the user interface.  
+This project is implemented in Java, using a GUI framework for the user interface.  
 
 ## 🛠️ Features  
 
